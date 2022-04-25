@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <title>RABBiRT</title>
+        <meta name="viewport" content="initial-scale=1,width=device-width">
+        <meta charset="utf-8">
+        <style>
+            :root {
+                --color: #000000;
+                --color2: #ffffff;
+                --corner: 0px;
+                --fontStyle: inherit;
+                --fontWeight: inherit;
+            }
+            html, body {
+                margin: 0;
+                height: 100%;
+                overflow-x: hidden;
+            }
+            body {
+                text-align: center;
+                background: var(--color);
+            }
+            #content {
+                margin: auto;
+                display: flex;
+                text-align: center;
+                flex-direction: column;
+                height: 100%;
+            }
+            .link {
+                display: inline-block;
+                border: .5em solid var(--color2);
+                border-radius: var(--corner);
+                font-style: var(--fontStyle);
+                font-weight: var(--fontWeight);
+                flex: 1 1 auto;
+                font-size: 2em;
+            }
+            a, p {
+                color: var(--color2);
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <p class="link">RABBiRT Links</p>
+            <a class="link" href="https://www.youtube.com/c/rabbirt">YouTube</a>
+            <a class="link" href="https://www.twitch.tv/rab_birt">Twitch</a>
+            <a class="link" href="https://instagram.com/rabbirta">Instagram</a>
+            <a class="link" href="https://twitter.com/rab_birt">Twitter</a>
+        </div>
+        
+        <script>
+            // options
+            let fontStyles = ["regular","italic"];
+            let corners = ["1em", "0px"];
+
+            function randomStyle(){
+                fontStyle = fontStyles[Math.floor(Math.random()*fontStyles.length)];
+                fontWeight = Math.floor(Math.random() * 600) + 100
+                corner = corners[Math.floor(Math.random()*corners.length)];
+                color = Math.floor(Math.random()*16777215).toString(16);
+                
+                document.documentElement.style.setProperty('--color', "#"+color);
+                let color2 = (Number(`0x1${color}`) ^ 0xFFFFFF).toString(16).substr(1);
+                document.documentElement.style.setProperty('--color2', "#"+color2);
+                document.documentElement.style.setProperty('--corner', corner);
+                document.documentElement.style.setProperty('--fontStyle', fontStyle);
+                document.documentElement.style.setProperty('--fontWeight', fontWeight);
+
+                console.log(fontStyle, fontWeight, corner, color, color2);
+
+            }
+
+            randomStyle();
+        </script>
+
+    </body>
+</html>
