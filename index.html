@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>RABBiRT</title>
+        <title>RABBiRT's Links</title>
         <meta name="viewport" content="initial-scale=1,width=device-width">
         <meta charset="utf-8">
         <style>
@@ -11,6 +11,7 @@
                 --corner: 0px;
                 --fontStyle: inherit;
                 --fontWeight: inherit;
+                --borderWeight: .5em;
             }
             html, body {
                 margin: 0;
@@ -30,12 +31,15 @@
             }
             .link {
                 display: inline-block;
-                border: .5em solid var(--color2);
+                border: var(--borderWeight) solid var(--color2);
                 border-radius: var(--corner);
                 font-style: var(--fontStyle);
                 font-weight: var(--fontWeight);
                 flex: 1 1 auto;
                 font-size: 2em;
+            }
+            .link:hover {
+                filter: saturate(200%);
             }
             a, p {
                 color: var(--color2);
@@ -44,36 +48,44 @@
     </head>
     <body>
         <div id="content">
-            <p class="link">RABBiRT Links</p>
+            <p class="link">RABBiRT's Links <small id="quote">hello world</small></p>
             <a class="link" href="https://www.youtube.com/c/rabbirt">YouTube</a>
             <a class="link" href="https://www.twitch.tv/rab_birt">Twitch</a>
             <a class="link" href="https://instagram.com/rabbirta">Instagram</a>
             <a class="link" href="https://twitter.com/rab_birt">Twitter</a>
+            <a class="link" href="https://soundcloud.com/rabbirt">SoundCloud</a>
         </div>
         
         <script>
             // options
             let fontStyles = ["regular","italic"];
-            let corners = ["1em", "0px"];
+            let corners = ["1em", "0px", "25%", "5%"];
+            let quotes = ["you're fine", "hey you", "fuck yeah", "hello world"];
 
             function randomStyle(){
                 fontStyle = fontStyles[Math.floor(Math.random()*fontStyles.length)];
                 fontWeight = Math.floor(Math.random() * 600) + 100
                 corner = corners[Math.floor(Math.random()*corners.length)];
                 color = Math.floor(Math.random()*16777215).toString(16);
-                
+                color2 = (Number(`0x1${color}`) ^ 0xFFFFFF).toString(16).substr(1);
+                quote = quotes[Math.floor(Math.random()*quotes.length)];
+
+
                 document.documentElement.style.setProperty('--color', "#"+color);
-                let color2 = (Number(`0x1${color}`) ^ 0xFFFFFF).toString(16).substr(1);
                 document.documentElement.style.setProperty('--color2', "#"+color2);
                 document.documentElement.style.setProperty('--corner', corner);
                 document.documentElement.style.setProperty('--fontStyle', fontStyle);
                 document.documentElement.style.setProperty('--fontWeight', fontWeight);
+                document.getElementById("quote").innerText = '"'+ quote + '"';
+                document.title = "RABBiRT's Links " + '"'+ quote + '"';
 
                 console.log(fontStyle, fontWeight, corner, color, color2);
-
             }
 
-            randomStyle();
+            if(localStorage["theme"] == undefined){
+                randomStyle();
+            }
+            
         </script>
 
     </body>
