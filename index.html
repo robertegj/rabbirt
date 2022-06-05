@@ -51,7 +51,7 @@
             .link:hover {
                 filter: saturate(200%);
             }
-            a, p {
+            a, p, h1 {
                 color: var(--color2);
             }
             img {
@@ -62,13 +62,34 @@
                 border-radius: 50%;
                 object-fit: cover;
             }
+            img, .link {
+                filter: sepia(100%);
+                color: black;
+            }
+            img:hover, .link:hover {
+                filter: sepia(0%);
+                color: var(--color); 
+            }
+            #quote, h1 {
+                background: black;
+                font-family: monospace;
+                font-size: 3em;
+            }
+            #quote {
+                margin-top: .3em;
+                margin-bottom: 0;
+            }
+            h1 {
+                margin-top: 0;
+                margin-bottom: .3em;
+            }
         </style>
     </head>
     <body>
         <div id="content">
-            <p class="link">RABBiRT's Links</p>
             <img src="/rabbirt.jpg"/>
             <p id="quote">hello world</p>
+            <h1>RABBiRT stuff:</h1>
             <a class="link" href="https://www.youtube.com/c/rabbirt">YouTube</a>
             <a class="link" href="https://www.twitch.tv/rab_birt">Twitch</a>
             <a class="link" href="https://instagram.com/rabbirta">Instagram</a>
