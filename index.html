@@ -101,8 +101,11 @@
             // options
             let fontStyles = ["regular","italic"];
             let corners = ["1em", "0px", "25%", "5%"];
-            let quotes = ["you're fine", "hey you", "fuck yeah", "hello world"];
-
+            let quotes = ["you're fine", "hey you", "fuck yeah", "hello world", "uhhhh..."];
+            function ye() {
+                document.getElementById("quote").innerText = quotes[Math.floor(Math.random()*quotes.length)]
+            }
+            setInterval(ye, 1500);
             
         </script>
 
